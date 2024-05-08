@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ControladorEquipos {
     @Autowired
-    ServicioEstudiante servEstudiante;
+    ServicioEquipos servEquipo;
 
     @GetMapping("/")
     public String inicio(){
-        return "redirect:/estudiantes/lista";
+        return "redirect:/equipos/lista";
     }
 
     @GetMapping("/estudiantes/lista")
     public String mostrar(Model model){
-        model.addAttribute("estudiante",servEstudiante.listar());
-        return "estudiantes";
+        model.addAttribute("equipo",servEquipo.listar());
+        return "equipos";
     }
 }

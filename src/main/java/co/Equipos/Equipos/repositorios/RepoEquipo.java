@@ -1,7 +1,7 @@
 package co.Equipos.Equipos.repositorios;
 
-import co.ucentral.gestionador.de.notas.entidades.Estudiante;
+import co.Equipos.Equipos.entidades.Equipo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RepoEquipo extends JpaRepository<Estudiante,Long> {
+public interface RepoEquipo extends JpaRepository<Equipo,Long> {
 }
