@@ -2,21 +2,19 @@ package co.Equipos.Equipos.entidades;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.io.Serializable;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity(name = "Equipo")
 @Table(name = "EQUIPOS")
+@Builder
+@ToString
 public class Equipo {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EQUIPOS")
-    @SequenceGenerator(name = "SEQ_EQUIPOS", sequenceName = "SEQ_EQUIPOS", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO)
 
 
     @Column(name = "EQU_NOMBRE", nullable = false)
@@ -30,4 +28,10 @@ public class Equipo {
 
     @Column(name = "EQU_DIRECCION", nullable = false)
     private String direccion;
+
+    @ManyToOne
+    @JoinColumn(name = "EST_NOMBRE")
+    private Estadio estadio;
+
+
 }

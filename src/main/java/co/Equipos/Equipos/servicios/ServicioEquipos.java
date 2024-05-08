@@ -5,8 +5,7 @@ import co.Equipos.Equipos.dto.EquiposDto;
 import co.Equipos.Equipos.entidades.Equipo;
 import co.Equipos.Equipos.operaciones.OperacionesEquipo;
 import co.Equipos.Equipos.repositorios.RepoEquipo;
-import org.Equipos.Equipos.ModelMapper;
-import org.modelmapper.TypeToken;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,23 +15,36 @@ import java.util.List;
 public class ServicioEquipos implements OperacionesEquipo {
 
     @Autowired
-    RepoEquipo repoEquipos;
-
-    @Autowired
-    ModelMapper modelMapper;
+    RepoEquipo repoEquipo ;
 
     @Override
-    public List<EquiposDto> listar() {
-        TypeToken<List<EquipoDto>> typeToken = new TypeToken<>(){};
-        return modelMapper.map(repoEquipos.findAll(),typeToken.getType());
-
+    public Equipo crear(Equipo equipo) {
+        return repoEquipo.save(equipo);
     }
 
     @Override
-    public void ingresar(EquipoDto docente) {
-        Docente docentes = modelMapper.map(docente,Docente.class);
-        repoDocentes.save(docentes);
+    public Equipo actualizar(Equipo equipo) {
+        /*if (this.consultarPK(Equipo.getNombre()) != null)
+            return repoEquipo.save(equipo);*/
+        return null;
+    }
+
+    @Override
+    public void borrar(Equipo equipo) {
+        repoEquipo.delete(equipo);;
+    }
+
+    @Override
+    public List<Equipo> consultarT() {
+        return repoEquipo.findAll();
+    }
+
+    @Override
+    public Equipo consultarPK(int pk) {
+        return repoEquipo.findById((long) pk).orElse(null);
 
     }
+
+   
 
 }

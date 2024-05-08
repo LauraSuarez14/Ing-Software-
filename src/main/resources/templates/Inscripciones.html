@@ -11,39 +11,39 @@
         <form th:action="@{/equipo/nuevo}" method="post" th:object="${equipo}">
 
             <div class="mb-3">
-                <label for="codigo_equipo" class="form-label">codigo</label>
-                <input th:field="*{codigo}" type="number" class="form-control" id="nombre_equipo" aria-describedby="emailHelp">
+                <label for="id_equipo" class="form-label">id</label>
+                <input th:field="*{id}" type="number" class="form-control" id="id_equipo" aria-describedby="emailHelp">
             </div>
 
             <div class="mb-3">
-                <label  for="categoria" class="form-label">nombre</label>
-                <input th:field="*{nombre}" type="text" class="form-control" id="categoria" aria-describedby="emailHelp">
+                <label  for="nombre" class="form-label">nombre</label>
+                <input th:field="*{nombre}" type="text" class="form-control" id="nombre" aria-describedby="emailHelp">
 
             </div>
             <div class="mb-3">
-                <label  for="apellido" class="form-label">apellido</label>
-                <input th:field="*{apellido}" type="text" class="form-control" id="apellido" aria-describedby="emailHelp">
+                <label  for="direccion" class="form-label">direccion</label>
+                <input th:field="*{direccion}" type="text" class="form-control" id="direccion" aria-describedby="emailHelp">
 
             </div>
             <div class="mb-3">
-                <label  for="edad" class="form-label">edad</label>
-                <input th:field="*{edad}" type="number" class="form-control" id="edad" aria-describedby="emailHelp">
+                <label  for="tecnico" class="form-label">tecnico</label>
+                <input th:field="*{tecnico}" type="text" class="form-control" id="tecnico" aria-describedby="emailHelp">
 
             </div>
             <div class="mb-3">
-                <label  for="especialidad" class="form-label">especialidad</label>
-                <input th:field="*{especialidad}" type="text" class="form-control" id="especialidad" aria-describedby="emailHelp">
+                <label  for="uniforme" class="form-label">uniforme</label>
+                <input th:field="*{uniforme}" type="text" class="form-control" id="uniforme" aria-describedby="emailHelp">
 
             </div>
-            <!--
-             <div class="mb-3">
-
-        <label for="categoria" class="form-label">Categoría</label>
-        <select class="form-control" id="cat" name="categoria">
-                    <option th:each="categoria : ${categorias}" th:value="${categoria.id_categoria}" >opcion</option>
-                </select>
-            </div>-->
             <button type="submit" class="btn btn-primary">Enviar</button>
+
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar" onclick="window.location.href = 'http://localhost:63342/Equipos/src/main/resources/templates/listar.html?_ijt=ho8vori48sfh0piarkcojtdge1&_ij_reload=RELOAD_ON_SAVE'" >
+                <span class="sr-only">App equipos </span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
         </form>
     </div>
 </div>

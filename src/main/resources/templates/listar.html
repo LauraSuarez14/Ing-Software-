@@ -14,13 +14,13 @@
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed"
                     data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                    aria-controls="navbar" onclick="window.location.href = '/'" >
-                <span class="sr-only">App medicos </span> <span
+                    aria-controls="navbar" onclick="window.location.href = 'http://localhost:63342/Equipos/src/main/resources/templates/Inscripciones.html?_ijt=ho8vori48sfh0piarkcojtdge1&_ij_reload=RELOAD_ON_SAVE'" >
+                <span class="sr-only">agregar equipos </span> <span
                     class="icon-bar"></span> <span class="icon-bar"></span> <span
                     class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#" th:href="@{/medicos/lista}">Listado de medicos</a>
-            <a class="navbar-brand" href="#" th:href="@{/medicos/ingresar}">agregar</a>
+            <a class="navbar-brand" href="#" th:href="@{/equipos/lista}">Listado de equipos</a>
+            <a class="navbar-brand" href="#" th:href="@{/equipos/ingresar}">agregar</a>
 
         </div>
 
@@ -28,7 +28,7 @@
 </nav>
 
 <div class="container">
-    <h1>Lista de Productos</h1>
+    <h1>Lista de Equipos</h1>
     <br>
 
     <br> <br>
@@ -37,25 +37,23 @@
         <thead class="table-dark">
         <tr>
             <th>Id</th>
-            <th>cedula</th>
             <th>nombre</th>
-            <th>apellido</th>
-            <th>edad</th>
-            <th>especialidad</th>
+            <th>direccion</th>
+            <th>tecnico</th>
+            <th>uniforme</th>
 
 
         </tr>
         </thead>
         <tbody>
-        <tr th:each="dato : ${medico}">
-            <td th:text="${dato.id}">id</td>
-            <td th:text="${dato.cedula}">cedula</td>
-            <td th:text="${dato.nombre}">nombre</td>
-            <td th:text="${dato.apellido}">especialidad</td>
-            <td th:text="${dato.edad}">edad</td>
-            <td th:text="${dato.especialidad}">especialidad</td>
-
+        <tr th:each="equipo : ${listaEquipos}">
+            <td th:text="${equipo.id}">id</td>
+            <td th:text="${equipo.nombre}">nombre</td>
+            <td th:text="${equipo.direccion}">direccion</td>
+            <td th:text="${equipo.tecnico}">tecnico</td>
+            <td th:text="${equipo.uniforme}">uniforme</td>
         </tr>
+
         </tbody>
     </table>
 </div>
