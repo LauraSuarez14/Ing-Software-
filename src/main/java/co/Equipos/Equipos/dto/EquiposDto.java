@@ -13,11 +13,14 @@ import java.io.Serializable;
 @ToString
 
 public class EquiposDto implements Serializable{
+
     private long id;
 
     private long correo;
 
     private String nombre;
 
-    private String apellido;
+    private String direccion;
+
+    private int telefono;
 }
