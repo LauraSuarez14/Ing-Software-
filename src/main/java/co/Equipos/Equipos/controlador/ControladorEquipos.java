@@ -18,18 +18,23 @@ public class ControladorEquipos {
 
     @GetMapping("/")
     public String inicio(){
-        return "redirect:/equipo/lista";
+        return "redirect:/index";
     }
 
-    @GetMapping("/equipo/lista")
+    @GetMapping("/index")
+    public String index(Model model){
+        return "index";
+    }
+
+    @GetMapping("/mostrar")
     public String mostrar(Model model){
         model.addAttribute("listaEquipos",servicioEquipos.consultarT());
 
         for (Equipo elequipo : servicioEquipos.consultarT()){
             System.out.println( elequipo);
         }
-        System.out.println("Paso por aca");
-        return "listaequipos";
+        //System.out.println("Paso por aca");
+        return "lista";
     }
 
     @GetMapping({  "/equipo/nuevo"})
@@ -43,7 +48,7 @@ public class ControladorEquipos {
 
 
         System.out.println("Paso por aca formulario");
-        return "formcreaequipo";
+        return "inscripciones";
     }
 
     @PostMapping({"/accioncrear"})
