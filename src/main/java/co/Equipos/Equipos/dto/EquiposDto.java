@@ -16,11 +16,11 @@ public class EquiposDto implements Serializable{
 
     private long id;
 
-    private long correo;
+    private String direccion;
 
     private String nombre;
 
-    private String direccion;
+    private String tecnico;
 
-    private int telefono;
+    private String uniforme;
 }

@@ -17,6 +17,9 @@ public class Equipo {
     @GeneratedValue(strategy = GenerationType.AUTO)
 
 
+    @Column(name = "EQU_ID", nullable = false)
+    private long id;
+
     @Column(name = "EQU_NOMBRE", nullable = false)
     private String nombre;
 
