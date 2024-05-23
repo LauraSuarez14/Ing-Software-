@@ -9,4 +9,5 @@ public interface OperacionesEquipo {
     void crear(EquiposDto equipo);
     public List<EquiposDto> consultarT();
     EquiposDto findDtoById(Long id);
+
 }

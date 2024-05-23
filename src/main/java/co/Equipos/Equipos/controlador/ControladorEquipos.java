@@ -37,11 +37,21 @@ public class ControladorEquipos {
         model.addAttribute("equipoLlenar", equipoLlenar);
         return "inscripciones";
     }
+    @GetMapping("/equipo/partido")
+    public String calendarioPartidos(Model model){
+        return "partidos";
+    }
+
+    @PostMapping("/equipo/crear/partido")
+    public String crearCalendario(Model model){
+        servicioEquipos.crearCalendario();
+        return "redirect:/equipo/partido";
+    }
 
     @PostMapping("/equipo/nuevo")
     public String accioncrear(@ModelAttribute("equipoLlenar") EquiposDto equipo){
         servicioEquipos.crear(equipo);
-        return "redirect:/equipo/lista";
+        return "redirect:/equipo/inscripcion";
     }
 
     @GetMapping("/equipos/{id}")

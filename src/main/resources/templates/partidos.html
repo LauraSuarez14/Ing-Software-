@@ -1,10 +1,11 @@
-OCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campeonatos de Fútbol</title>
+    <title>Lista de Partidos</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <style>
         body {
@@ -73,7 +74,7 @@ OCTYPE html>
 </head>
 <body>
 <header>
-    <h1>Agregar Equipo</h1>
+    <h1>Partidos de fútbol</h1>
 </header>
 <nav>
     <a href="/#">Inicio</a>
@@ -84,36 +85,15 @@ OCTYPE html>
     <a href="#">Tabla de Posiciones</a>
 </nav>
 <div class="container">
-    <h1>Inscribir equipo</h1>
-    <form th:action="@{/equipo/nuevo}" method="post" th:object="${equipoLlenar}">
-        <div class="form-group">
-            <label for="id_equipo">ID</label>
-            <input th:field="*{id}" type="number" class="form-control" id="id_equipo" name="id" required>
-        </div>
-
-        <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input th:field="*{nombre}" type="text" class="form-control" id="nombre" name="nombre" required>
-        </div>
-
-        <div class="form-group">
-            <label for="direccion">Dirección</label>
-            <input th:field="*{direccion}" type="   text" class="form-control" id="direccion" name="direccion" required>
-        </div>
-
-        <div class="form-group">
-            <label for="tecnico">Técnico</label>
-            <input th:field="*{tecnico}" type="text" class="form-control" id="tecnico" name="tecnico" required>
-        </div>
-
-        <div class="form-group">
-            <label for="uniforme">Uniforme</label>
-            <input th:field="*{uniforme}" type="text" class="form-control" id="uniforme" name="uniforme" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
+    <div class="content">
+        <h2>Calendario de Partidos</h2>
+        <ul class="list-group">
+            <li class="list-group-item" th:each="partido : ${calendario}" th:text="${partido}"></li>
+        </ul>
+    </div>
 </div>
-
+<footer>
+    <p>&copy; 2024 Partidos de fútbol</p>
+</footer>
 </body>
 </html>
