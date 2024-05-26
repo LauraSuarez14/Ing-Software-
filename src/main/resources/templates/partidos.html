@@ -90,10 +90,23 @@
         <ul class="list-group">
             <li class="list-group-item" th:each="partido : ${calendario}" th:text="${partido}"></li>
         </ul>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Equipo local</th>
+                <th>Equipo visitante</th>
+                <th>fecha</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="equipo : ${listaEquipos}">
+                <td th:text="${equipo.nombre.size()}">ucentral</td>
+                <td th:text="${equipo.nombre.size()+1}">santoto</td>
+                <td th:text="${equipo.direccion}">fecha 1</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
-<footer>
-    <p>&copy; 2024 Partidos de fútbol</p>
-</footer>
 </body>
 </html>
