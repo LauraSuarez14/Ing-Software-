@@ -42,6 +42,13 @@ public class ControladorEquipos {
         return "partidos";
     }
 
+    @GetMapping("/equipo/posiciones")
+    public String posicionesPartido(Model model){
+        List<EquiposDto> listaEquipos = servicioEquipos.consultarT();
+        model.addAttribute("listaEquipos", listaEquipos);
+        return "posiciones";
+    }
+
     @PostMapping("/equipo/crear/partido")
     public String crearCalendario(Model model){
         servicioEquipos.crearCalendario();
