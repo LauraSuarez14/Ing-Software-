@@ -81,7 +81,7 @@
     <a href="/equipo/lista">Equipos</a>
     <a href="/equipo/inscripcion">Agregar equipo</a>
     <a href="/equipo/partido">Partidos</a>
-    <a href="#">Resultados</a>
+    <a href="/equipo/resultado">Resultados</a>
     <a href="/equipo/posiciones">Tabla de Posiciones</a>
 </nav>
 <div class="container">
@@ -95,14 +95,18 @@
             <tr>
                 <th>Equipo local</th>
                 <th>Equipo visitante</th>
-                <th>fecha</th>
+                <th>Fecha</th>
+                <th>Generar Resultado</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="equipo : ${listaEquipos}">
-                <td th:text="${equipo.nombre.size()}">ucentral</td>
-                <td th:text="${equipo.nombre.size()+1}">santoto</td>
-                <td th:text="${equipo.direccion}">fecha 1</td>
+            <tr th:each="partido : ${listaPartidos}">
+                <td th:text="${partido.local}">local</td>
+                <td th:text="${partido.visitante}">visitante</td>
+                <td th:text="${partido.fecha}">fecha 1</td>
+                <td>
+                    <a href="#" th:href="@{'/equipo/partido/' + ${partido.id} + '/resultado'}" class="btn btn-primary">Generar Resultado</a>
+                </td>
             </tr>
             </tbody>
         </table>

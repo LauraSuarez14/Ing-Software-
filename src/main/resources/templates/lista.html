@@ -81,7 +81,7 @@
     <a href="/equipo/lista">Equipos</a>
     <a href="/equipo/inscripcion">Agregar equipo</a>
     <a href="/equipo/partido">Partidos</a>
-    <a href="#">Resultados</a>
+    <a href="/equipo/resultado">Resultados</a>
     <a href="/equipo/posiciones">Tabla de Posiciones</a>
 </nav>
     <div class="container">
@@ -107,6 +107,9 @@
             </tbody>
         </table>
 
-        <a href="/equipo/crear/partido" class="btn btn-primary">Crear Calendario</a>
+        <form action="/equipo/crear/partido" method="post">
+            <button type="submit" class="btn btn-primary">Crear Calendario</button>
+        </form>
+
     </div>
     </body>

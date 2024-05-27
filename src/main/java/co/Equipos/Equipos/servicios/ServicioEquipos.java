@@ -10,8 +10,11 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class ServicioEquipos implements OperacionesEquipo {
@@ -46,39 +49,5 @@ public class ServicioEquipos implements OperacionesEquipo {
     public EquiposDto findDtoById(Long id) {
         Equipo equipo = repoEquipo.findById(id).orElse(null);
         return equipo != null ? modelMapper.map(equipo, EquiposDto.class) : null;
-    }
-
-
-    public void crearCalendario() {
-        List<EquiposDto> equipos = consultarT();
-        int numEquipos = equipos.size();
-        if (numEquipos % 2 != 0) {
-            throw new IllegalArgumentException("El número de equipos debe ser par.");
-        }
-
-        List<String> calendario = new ArrayList<>();
-
-        int numRondas = numEquipos - 1;
-
-        for (int ronda = 0; ronda < numRondas; ronda++) {
-            calendario.add("Ronda " + (ronda + 1));
-
-            for (int i = 0; i < numEquipos / 2; i++) {
-                int equipoLocal = (ronda + i) % (numEquipos - 1);
-                int equipoVisitante = (numEquipos - 1 - i + ronda) % (numEquipos - 1);
-
-
-                if (i == 0) {
-                    equipoVisitante = numEquipos - 1;
-                }
-
-                calendario.add(equipos.get(equipoLocal).getNombre() + " vs " + equipos.get(equipoVisitante).getNombre());
-            }
-        }
-
-
-        /*for (String partido : calendario) {
-            System.out.println(partido);
-        }*/
     }
 }
