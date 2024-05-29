@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultados de Partidos</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 1rem 0;
+      text-align: center;
+    }
+    nav {
+      background-color: #444;
+      overflow: hidden;
+    }
+    nav a {
+      float: left;
+      display: block;
+      color: #fff;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    .content {
+      margin: 2rem;
+    }
+    .content h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .table th, .table td {
+      text-align: center;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Resultados de Partidos</h1>
+</header>
+<nav>
+  <a href="/#">Inicio</a>
+  <a href="/equipo/lista">Equipos</a>
+  <a href="/equipo/inscripcion">Agregar equipo</a>
+  <a href="/equipo/partido">Partidos</a>
+  <a href="/equipo/resultado">Resultados</a>
+  <a href="/equipo/posiciones">Tabla de Posiciones</a>
+</nav>
+<div class="container">
+  <div class="content">
+    <h2>Resultados</h2>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Equipo local</th>
+        <th>Goles Local</th>
+        <th>Equipo visitante</th>
+        <th>Goles Visitante</th>
+        <th>Resultado</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="partido : ${listaPartidos}">
+        <td th:text="${partido.local}">local</td>
+        <td th:text="${0}">0</td>
+        <td th:text="${partido.visitante}">visitante</td>
+        <td th:text="${0}">0</td>
+        <td th:text="${0}">0</td>
+                </div>
+                </div>
+              </div>
+            </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

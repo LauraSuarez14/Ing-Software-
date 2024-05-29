@@ -3,13 +3,18 @@ package co.Equipos.Equipos.servicios;
 import co.Equipos.Equipos.operaciones.OperacionesEquipo;
 import co.Equipos.Equipos.dto.EquiposDto;
 import co.Equipos.Equipos.entidades.Equipo;
-import co.Equipos.Equipos.operaciones.OperacionesEquipo;
 import co.Equipos.Equipos.repositorios.RepoEquipo;
 
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class ServicioEquipos implements OperacionesEquipo {
@@ -17,35 +22,32 @@ public class ServicioEquipos implements OperacionesEquipo {
 
     @Autowired
     RepoEquipo repoEquipo ;
+    @Autowired
+    ModelMapper modelMapper;
 
-    @Override
-    public Equipo crear(Equipo equipo) {
-        return repoEquipo.save(equipo);
+    public ServicioEquipos(ModelMapper modelMapper, RepoEquipo repoEquipo) {
+        this.modelMapper = modelMapper;
+        this.repoEquipo = repoEquipo;
     }
 
     @Override
-    public Equipo actualizar(Equipo equipo) {
-        /*if (this.consultarPK(Equipo.getNombre()) != null)
-            return repoEquipo.save(equipo);*/
-        return null;
+    public void crear(EquiposDto equipo) {
+        Equipo equipos = modelMapper.map(equipo,Equipo.class);
+                repoEquipo.save(equipos);
     }
+
 
     @Override
-    public void borrar(Equipo equipo) {
-        repoEquipo.delete(equipo);;
+    public List<EquiposDto> consultarT() {
+        TypeToken<List<EquiposDto>> typeToken = new TypeToken<>() {
+        };
+        return modelMapper.map(repoEquipo.findAll(), typeToken.getType());
     }
+
 
     @Override
-    public List<Equipo> consultarT() {
-        return repoEquipo.findAll();
+    public EquiposDto findDtoById(Long id) {
+        Equipo equipo = repoEquipo.findById(id).orElse(null);
+        return equipo != null ? modelMapper.map(equipo, EquiposDto.class) : null;
     }
-
-    @Override
-    public Equipo consultarPK(int pk) {
-        return repoEquipo.findById((long) pk).orElse(null);
-
-    }
-
-   
-
 }

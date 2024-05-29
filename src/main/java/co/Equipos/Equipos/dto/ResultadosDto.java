@@ -1,5 +1,4 @@
 package co.Equipos.Equipos.dto;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,15 +11,22 @@ import java.io.Serializable;
 @Builder
 @ToString
 
-public class EquiposDto implements Serializable{
+public class ResultadosDto implements Serializable{
 
     private long id;
 
-    private String direccion;
+    private int golL;
 
-    private String nombre;
+    private int golV;
 
-    private String tecnico;
+    private String jugadorGol;
 
-    private String uniforme;
+    private boolean autogol;
+
+    private int minuto;
+
+    private String local;
+
+    private String visitante;
+
 }

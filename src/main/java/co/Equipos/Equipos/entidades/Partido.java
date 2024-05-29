@@ -19,7 +19,7 @@ public class Partido {
 
 
     @Column(name = "PAR_ID", nullable = false)
-    private int id;
+    private long id;
 
     @Column(name = "PAR_FECHA", nullable = false)
     private String fecha;
@@ -29,4 +29,10 @@ public class Partido {
 
     @Column(name = "PAR_VISITANTE", nullable = false)
     private String visitante;
+
+    @ManyToOne
+    @JoinColumn(name = "EQU_NOMBRE")
+    private Equipo equipo;
+
+
 }

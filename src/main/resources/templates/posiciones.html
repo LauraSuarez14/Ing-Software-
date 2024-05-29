@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Inicio</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Equipos</title>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,23 +36,11 @@
             background-color: #ddd;
             color: black;
         }
-        .hero {
-            background-image: url('hero-image.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 50vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-shadow: 2px 2px 4px #000;
-        }
+
         .hero h1 {
             font-size: 3rem;
         }
-        .content {
-            padding: 2rem;
-        }
+
         .content h2 {
             text-align: center;
             margin-bottom: 1rem;
@@ -60,9 +49,7 @@
             text-align: center;
             font-size: 1.2rem;
         }
-        .teams {
-            margin: 2rem 0;
-        }
+
         .teams ul {
             list-style: none;
             padding: 0;
@@ -87,7 +74,7 @@
 </head>
 <body>
 <header>
-    <h1>Campeonato fútbol</h1>
+    <h1>Tabla de posiciones</h1>
 </header>
 <nav>
     <a href="/#">Inicio</a>
@@ -97,20 +84,37 @@
     <a href="/equipo/resultado">Resultados</a>
     <a href="/equipo/posiciones">Tabla de Posiciones</a>
 </nav>
-<div class="hero">
-    <h1>¡Bienvenidos al Campeonato de Fútbol 2024!</h1>
+<div class="container">
+    <h1>Lista de equipos</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Posicion</th>
+            <th>Equipo</th>
+            <th>PJ</th>
+            <th>G</th>
+            <th>E</th>
+            <th>P</th>
+            <th>Pts</th>
+            <th>GF</th>
+            <th>GC</th>
+            <th>DF</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="equipo, status : ${listaEquipos}">
+            <td th:text="${status.index+1}">1</td>
+            <td th:text="${equipo.nombre}">Equipo</td>
+            <td th:text="0">Jugados</td>
+            <td th:text="0">Ganados</td>
+            <td th:text="0">Empatados</td>
+            <td th:text="0">Perdidos</td>
+            <td th:text="0">Puntos</td>
+            <td th:text="0">Goles a favor</td>
+            <td th:text="0">Goles en contra</td>
+            <td th:text="0">Diferencia de gol</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
-<div class="content">
-    <section id="inicio">
-        <h2>Sobre el Campeonato</h2>
-        <p>El campeonato de fútbol más esperado del año está aquí. ¡Prepárate para disfrutar de los mejores partidos y emocionantes momentos!<br><br><br><br></p>
-    </section>
-
-</div>
-<footer>
-    <p>&copy; 2024 Campeonato de Fútbol. Aplicacion creada por Felipe Ortegon.</p>
-</footer>
 </body>
-
-
-</html></html>

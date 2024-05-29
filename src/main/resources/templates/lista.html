@@ -1,64 +1,115 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Lista_Equipos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Equipos</title>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            overflow: hidden;
+        }
+        nav a {
+            float: left;
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
 
+        .hero h1 {
+            font-size: 3rem;
+        }
+
+        .content h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .content p {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .teams ul {
+            list-style: none;
+            padding: 0;
+        }
+        .teams li {
+            background-color: #fff;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<header>
+    <h1>Torneos de Fútbol</h1>
+</header>
+<nav>
+    <a href="/#">Inicio</a>
+    <a href="/equipo/lista">Equipos</a>
+    <a href="/equipo/inscripcion">Agregar equipo</a>
+    <a href="/equipo/partido">Partidos</a>
+    <a href="/equipo/resultado">Resultados</a>
+    <a href="/equipo/posiciones">Tabla de Posiciones</a>
+</nav>
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed"
-                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                    aria-controls="navbar" onclick="window.location.href = 'http://localhost:63342/Equipos/src/main/resources/templates/Inscripciones.html?_ijt=ho8vori48sfh0piarkcojtdge1&_ij_reload=RELOAD_ON_SAVE'" >
-                <span class="sr-only">agregar equipos </span> <span
-                    class="icon-bar"></span> <span class="icon-bar"></span> <span
-                    class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#" th:href="@{/equipos/lista}">Listado de equipos</a>
-            <a class="navbar-brand" href="#" th:href="@{/equipos/ingresar}">agregar</a>
+        <h1>Lista de equipos</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Tecnico</th>
+                <th>Uniforme</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="equipo : ${listaEquipos}">
+                <td th:text="${equipo.id}">id</td>
+                <td th:text="${equipo.nombre}">nombre</td>
+                <td th:text="${equipo.direccion}">direccion</td>
+                <td th:text="${equipo.tecnico}">tecnico</td>
+                <td th:text="${equipo.uniforme}">uniforme</td>
+            </tr>
+            </tbody>
+        </table>
 
-        </div>
+        <form action="/equipo/crear/partido" method="post">
+            <button type="submit" class="btn btn-primary">Crear Calendario</button>
+        </form>
 
     </div>
-</nav>
-
-<div class="container">
-    <h1>Lista de Equipos</h1>
-    <br>
-
-    <br> <br>
-
-    <table class="table table-striped table-bordered">
-        <thead class="table-dark">
-        <tr>
-            <th>Id</th>
-            <th>nombre</th>
-            <th>direccion</th>
-            <th>tecnico</th>
-            <th>uniforme</th>
-
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="equipo : ${listaEquipos}">
-            <td th:text="${equipo.id}">id</td>
-            <td th:text="${equipo.nombre}">nombre</td>
-            <td th:text="${equipo.direccion}">direccion</td>
-            <td th:text="${equipo.tecnico}">tecnico</td>
-            <td th:text="${equipo.uniforme}">uniforme</td>
-        </tr>
-
-        </tbody>
-    </table>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-</body>
-</html>
+    </body>

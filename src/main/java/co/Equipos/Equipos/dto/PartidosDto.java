@@ -12,15 +12,14 @@ import java.io.Serializable;
 @Builder
 @ToString
 
-public class EquiposDto implements Serializable{
+public class PartidosDto implements Serializable{
 
     private long id;
 
-    private String direccion;
+    private String fecha;
 
-    private String nombre;
+    private String local;
 
-    private String tecnico;
+    private String visitante;
 
-    private String uniforme;
 }
